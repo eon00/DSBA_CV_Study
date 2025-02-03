@@ -54,21 +54,21 @@ pip install -r requirements.txt
 ## Resnet & ViT
 
 ### Resnet Source Code:
-- 먼저 Resnet Directory인 `./Resnet` 폴더로 이동한다.
-    - `./Resnet/renet.py`: scratch로 작성된 Resnet 모델이 구현되어 있다.
-    - `./Resnet/code/train`: Resnet모델을 주어진 데이터를 이용하여 train 하기 위한 코드가 구현되어 있다.
+- 먼저 Resnet Directory인 `./Resnet` 폴더로 이동
+    - `./Resnet/renet.py`: scratch로 작성된 Resnet 모델이 구현됨
+    - `./Resnet/code/train`
         1. `train_{augmentation}.py`: train을 구현한 python 코드, augumentation 여부에 따라 구별되어 있으며(데이터 처리 과정이 다름), pretrained 인자가 false 인 경우 scratch 모델 그 자체를 학습하거나, true인 경우 weight를 가져와서 학습을 진행함.
-        2. `train_{augmentation}.sh`: train 코드를 실행하기 위한 bash code로, 3가지의 인자를 입력 가능하다: 1.PATIENCE: Early Stopping patience 2.PRETRAINED: pretrained 모델 weight를 불러올지 여부, 3.GPU: GPU 설정
-    - `./Resnet/code/inference`: Resnet 모델을 inference하기 위한 코드가 구현되어 있다.
+        2. `train_{augmentation}.sh`: train 코드를 실행하기 위한 bash code로, 3가지의 인자를 입력 가능: 1.PATIENCE: Early Stopping patience 2.PRETRAINED: pretrained 모델 weight를 불러올지 여부, 3.GPU: GPU 설정
+    - `./Resnet/code/inference`: Resnet 모델을 inference하기 위한 코드가 구현됨
         1. `inference_{augmentation}.py`: inference를 구현한 python 코드
-        2. `inference_{augmentation}.sh`: inference 코드를 실행하기 위한 bash code로, `model_path`를 입력해주지 않을 경우, 학습되지 않은 모델로 학습되며, 모델 경로명을 입력했을 경우에, 학습된 모델을 불러온다.
-- train을 진행하기 위해서 아래의 코드를 실행한다.
+        2. `inference_{augmentation}.sh`: inference 코드를 실행하기 위한 bash code로, `model_path`를 입력해주지 않을 경우, 학습되지 않은 모델로 학습되며, 모델 경로명을 입력했을 경우에, 학습된 모델을 불러옴
+- train을 진행하기 위해서 아래의 코드를 실행한
     ```bash
     cd ./Resnet/code/train
     chmod +x train_augmentation.sh # 내부 option은 설정 필요
     ./train_augmentation.sh
     ```
-- inference을 진행하기 위해서 아래의 코드를 실행한다.
+- inference을 진행하기 위해서 아래의 코드를 실행
     ```bash
     cd ./Resnet/code/inference
     chmod +x inference_augmentation.sh # 내부 option은 설정 필요
@@ -76,22 +76,22 @@ pip install -r requirements.txt
     ```
 
 ### ViT Source Code:
-- ViT Directory인 `./ViT`폴더로 이동한다.
-    - `./ViT/models.py` : ViT 모델이 구현되어 있다.
-    - `./ViT/train.py` : ViT모델을 주어진 데이터를 이용하여 train 하기 위한 코드가 구현되어 있다.
-        1. `train.py`: train을 구현한 python 코드, augumentation 여부를 직접 수정했다.
-        2. `{file_name}.sh`: train 코드를 실행하기 위한 bash code이다.
+- ViT Directory인 `./ViT`폴더로 이동
+    - `./ViT/models.py` : ViT 모델이 구현됨
+    - `./ViT/train.py` 
+        1. `train.py`: train을 구현한 python 코드, augumentation 여부를 직접 수정함
+        2. `{file_name}.sh`: train 코드를 실행하기 위한 bash code
         3. `{config_name}.yaml`: configuration의 option이 담겨있는 yaml파일, Hyper Parameter 설정 가능
-    - `./ViT/inference`: ViT 모델을 inference하기 위한 코드가 구현되어 있다.
+    - `./ViT/inference`: ViT 모델을 inference하기 위한 코드가 구현됨
         1. `inference.py`: inference를 구현한 python 코드
-        2. `inference.sh`: inference 코드를 실행하기 위한 bash code로, `model_path`를 입력해주지 않을 경우, 학습되지 않은 모델로 학습되며, 모델 경로명을 입력했을 경우에, 학습된 모델을 불러온다.
-- train을 진행하기 위해서 아래의 코드를 실행한다.
+        2. `inference.sh`: inference 코드를 실행하기 위한 bash code로, `model_path`를 입력해주지 않을 경우, 학습되지 않은 모델로 학습되며, 모델 경로명을 입력했을 경우에, 학습된 모델을 불러옴
+- train을 진행하기 위해서 아래의 코드를 실행
     ```bash
     cd ./Resnet/code/train
     chmod +x train_augmentation.sh # 내부 option은 설정 필요
     ./train_augmentation.sh
     ```
-- inference을 진행하기 위해서 아래의 코드를 실행한다.
+- inference을 진행하기 위해서 아래의 코드를 실행
     ```bash
     cd ./Resnet/code/inference
     chmod +x inference_augmentation.sh # 내부 option은 설정 필요
@@ -99,21 +99,17 @@ pip install -r requirements.txt
     ```
 
 ### Metric Source Code:
-- metric을 진행하기 위해서`./{model_name}/metric` 폴더로 이동한다.
-- metric을 진행하기 위해서 아래의 코드를 실행한다.
+- metric을 진행하기 위해서`./{model_name}/metric` 폴더로 이동
+- metric을 진행하기 위해서 아래의 코드를 실행
     ```bash
     cd ./Resnet/metric ## 예시
     python metric.py    
     ```
-- metric은 총 4가지의 Metric이 구현되어 있다.
-    1. Accuracy:
-        - 전체 샘플 중에서 정답을 맞춘 비율
-    2. Precision
-        - 모델이 Positive(예측한 정답)라고 예측한 것 중에서, 실제로 정답인 비율
-    3. Recall
-        - 모델이 정답(Positive)인 것 중에서, 얼마나 많이 맞췄는지에 대한 비율
-    4. F1_Score
-        - Precision과 Recall의 조화를 고려한 지표로, 두 값을 균형 있게 평가
+- metric은 총 4가지의 Metric이 구현됨
+    1. Accuracy: 전체 샘플 중에서 정답을 맞춘 비율
+    2. Precision: 모델이 Positive(예측한 정답)라고 예측한 것 중에서, 실제로 정답인 비율
+    3. Recall: 모델이 정답(Positive)인 것 중에서, 얼마나 많이 맞췄는지에 대한 비율
+    4. F1_Score: Precision과 Recall의 조화를 고려한 지표로, 두 값을 균형 있게 평가
 
 
 ## 🌲 File Structure
