@@ -11,15 +11,12 @@ parser = argparse.ArgumentParser(description="ViT Inference Script")
 parser.add_argument("--config", type=str, default="config.yaml", help="Path to the config file")
 args = parser.parse_args()
 
-# ✅ config 로드 함수
 def load_config(config_path):
     with open(config_path, "r") as file:
         return yaml.safe_load(file)
 
-# ✅ config 로드 및 DEVICE 설정
 config = load_config(args.config)
 
-# ✅ DEVICE 설정 (기본값: CPU -> GPU 가능 시 설정)
 if torch.cuda.is_available():
     device_id = torch.cuda.current_device()  # 현재 GPU ID 가져오기
     DEVICE = torch.device(f"cuda:{device_id}")
@@ -28,21 +25,20 @@ else:
     DEVICE = torch.device("cpu")
     print("CUDA is not available. Using CPU.")
 
-# ✅ 데이터 로더 & 모델 불러오기
+
 from dataloader import get_dataloaders
 from models import get_model
 from transformers import Trainer, TrainingArguments
 
-# ✅ 모델 로드
+# 모델 로드
 model = get_model(config, DEVICE, is_train=False)  # Inference에서는 저장된 모델 불러옴
 model.eval()
 
-# ✅ 데이터 로드 (테스트 데이터만 사용)
+# 데이터 로드 (테스트 데이터만 사용)
 _, test_loader = get_dataloaders(config)
 
-# ✅ 저장 디렉토리 생성
-output_dir = config["inference"].get("output_path", "results")  # ✅ 저장할 디렉토리 설정
-os.makedirs(output_dir, exist_ok=True)  # ✅ 디렉토리 없으면 생성
+output_dir = config["inference"].get("output_path", "results") 
+os.makedirs(output_dir, exist_ok=True)  
 
 # ✅ Trainer 설정
 trainer = Trainer(

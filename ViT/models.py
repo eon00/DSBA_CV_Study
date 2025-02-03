@@ -70,4 +70,4 @@ def get_model(config, device, is_train=False):
                 )
                 model = ViTForImageClassification(config=model_config)
 
-    return model.to(device)  # ✅ 최신 DEVICE 적용
+    return model.to(device) 
