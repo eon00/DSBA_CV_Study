@@ -1,0 +1,1 @@
+python inference_augmetation.py --gpu 0 --pretrained --model_path ./saved_model/best_resnet50_augmentation_True_gpu_0.pth

@@ -1,0 +1,7 @@
+*.npy
+__pycache__
+*.pth
+runs/
+wandb/
+checkpoints/
+saved_model/
